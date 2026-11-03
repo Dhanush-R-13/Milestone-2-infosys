@@ -329,90 +329,10 @@ The dashboard provides visibility into:
 
 ---
 
-# 🤖 4. Advanced SQL-Powered AI Copilot
-
-The AI Copilot is one of the central components of FranchiseOps AI.
-
-It provides a conversational interface for asking questions about franchise operations and retrieving answers from the application database.
-
-### Core Capabilities
-
-- Natural-language question handling.
-- Greeting and acknowledgement responses.
-- SQL-based data retrieval.
-- Whitelisted query patterns.
-- Support for alternative question wording.
-- Common spelling variation handling.
-- Role-based query authorization.
-- Outlet-level data filtering.
-- SQL query transparency.
-- Result row-count display.
-- Helpful suggestions for unsupported questions.
-
-### Deterministic Query Execution
-
-The Copilot uses approved SQL query patterns through `qa.py` and `analyst.py`.
-
-It is designed to avoid unsupported or fabricated database answers. Operational numbers should come from actual database query results.
-
-### Example Copilot Questions
-
-**Outlet Intelligence**
-```text
-Which outlet has the lowest CSAT?
-Show the outlet health ranking.
-Which outlet is performing best?
-```
-
-**Workforce Intelligence**
-```text
-How many staff does OUT-010 have?
-What is the average staff tenure across all locations?
-Show workforce and attrition insights.
-```
-
-**Inventory Intelligence**
-```text
-List items below reorder level.
-Which items have low stock cover?
-Show inventory reorder alerts.
-```
-
-**Marketing Intelligence**
-```text
-Which campaign has the best ROI?
-Show campaign performance.
-```
-
-**Customer Sentiment**
-```text
-Show negative reviews this week.
-What is the overall customer sentiment?
-```
-
-**Audit Intelligence**
-```text
-Show pending audit tickets for OUT-003.
-List recent compliance findings.
-```
-
-### Query Transparency
-
-For supported questions, the Copilot is designed to display:
-
-1. The user's question.
-2. The matched query pattern.
-3. The SQL query executed.
-4. The database response.
-5. The number of returned rows.
-
-### Unsupported Questions
-
-When a question is outside the supported database patterns, the Copilot should respond politely and suggest three relevant questions rather than generating an unverified answer.
 
 ---
 
-# ⚙️ 5. Six Autonomous Background Agents
+# ⚙️ 4. Six Autonomous Background Agents
 
 FranchiseOps AI includes six operational agents that continuously evaluate franchise-related information through background worker processes.
 
@@ -637,108 +557,6 @@ Add screenshots of the actual running application to the GitHub repository.
 
 ---
 
-# 📁 GitHub Repository Structure
-
-Recommended project organization:
-
-```text
-FranchiseOps-AI/
-│
-├── Milestone2/
-│   │
-│   ├── Milestone2_FranchiseOps_FastAPI.ipynb
-│   ├── README.md
-│   │
-│   ├── screenshots/
-│   │   ├── login.png
-│   │   ├── signup.png
-│   │   ├── dashboard.png
-│   │   ├── profile.png
-│   │   ├── admin-dashboard.png
-│   │   ├── rbac-denied-403.png
-│   │   ├── copilot-greeting.png
-│   │   ├── copilot-sql-answer.png
-│   │   ├── agent-workforce.png
-│   │   ├── agent-outlets.png
-│   │   ├── agent-inventory.png
-│   │   ├── agent-marketing.png
-│   │   ├── agent-sentiment.png
-│   │   └── agent-audit.png
-│   │
-│   └── docs/
-│       └── project-notes.md
-│
-└── README.md
-```
-
-Adapt the folder structure to match the actual files in your repository. Keep the notebook and any separately committed source files synchronized.
-
----
-
-# 🔒 GitHub Security and .gitignore
-
-Never upload:
-
-- `.env` files.
-- JWT signing keys.
-- Gmail app passwords.
-- ngrok authentication tokens.
-- SQLite database files.
-- Access tokens and OTP values.
-- Real user credentials.
-- Private logs containing personal information.
-
-Recommended `.gitignore`:
-
-```gitignore
-# Environment secrets
-.env
-.env.*
-!.env.example
-
-# SQLite databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Python cache
-__pycache__/
-*.py[cod]
-
-# Virtual environments
-.venv/
-venv/
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-.DS_Store
-
-# Notebook checkpoints
-.ipynb_checkpoints/
-```
-
-If a secret has previously been committed, rotate it. Removing the file in a later commit does not remove the secret from Git history.
-
----
-
-# 👩‍💻 Team Contributions
-
-The project is developed collaboratively by a five-member team.
-
-| Team Member | Responsibility | Main Work |
-|---|---|---|
-| Member 1 | Authentication & Security | Login, signup, password recovery, JWT and account protection |
-| Member 2 | RBAC & Profile | Role permissions, outlet scope and Profile page |
-| Member 3 | Admin Dashboard | User management, role changes, account locking and activity logs |
-| Member 4 | AI Copilot | SQL query patterns, question handling and RBAC integration |
-| Member 5 | UI & Integration | Frontend, responsive design, dark mode, testing and documentation |
-
-Replace the member labels with the actual team members' names and GitHub usernames before submission.
-
----
 
 # 🚀 Future Enhancements
 
@@ -755,44 +573,22 @@ Potential improvements beyond the current Milestone 2 scope include:
 
 ---
 
-# 📋 Milestone 2 Completion Checklist
 
-Use this checklist to track the final submission.
-
-- [ ] Application runs successfully in Google Colab.
-- [ ] Application access link works.
-- [ ] Milestone 1 authentication is integrated.
-- [ ] Password hashing and JWT authentication work.
-- [ ] Five-attempt login lockout works.
-- [ ] Logout and token revocation work.
-- [ ] `localuser.py` is no longer used for identity.
-- [ ] Profile page is implemented.
-- [ ] Five roles are implemented.
-- [ ] Server-side RBAC returns HTTP 403 for restricted access.
-- [ ] Store Manager outlet scope is enforced.
-- [ ] Admin user-management dashboard is implemented.
-- [ ] Admin safety protections are tested.
-- [ ] Activity log and KPI cards are available.
-- [ ] Copilot supports 15+ additional SQL question patterns.
-- [ ] Copilot handles unsupported questions.
-- [ ] Copilot displays SQL and row count.
-- [ ] Copilot applies role and outlet permissions.
-- [ ] All six operational agents are tested.
-- [ ] Responsive UI and dark mode work.
-- [ ] Required screenshots are included.
-- [ ] Notebook outputs are cleared.
-- [ ] No secrets, database files or tokens are committed.
 
 ---
 
-# 📚 References
+# 👩‍💻 Team Contributions
 
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [PyJWT Documentation](https://pyjwt.readthedocs.io/)
-- [Python SQLite Documentation](https://docs.python.org/3/library/sqlite3.html)
-- [Google Colab](https://colab.research.google.com/)
-- [ngrok Documentation](https://ngrok.com/docs)
-- [Milestone 2 Reference Notebook](https://colab.research.google.com/drive/1qZI67czq9k_g06bMQ3zV1cVvjmwR4T4e?usp=sharing)
+The project is developed collaboratively by a four-member team.
+
+| Team Member | Responsibility | Main Work |
+|---|---|---|
+| Shruti | Authentication & Security | Login, signup, password recovery, JWT and account protection |
+| Ayush | RBAC & Profile | Role permissions, outlet scope and Profile page |
+| Dhanush | Admin Dashboard | User management, role changes, account locking and activity logs |
+| Sujal | AI Copilot & Backend | SQL query patterns, question handling and RBAC integration |
+
+
 
 ---
 
